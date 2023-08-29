@@ -1,0 +1,6 @@
+token.json
+credentials.json
+.vscode/**
+__pycache__/**
+data/**
+resume/**
