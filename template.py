@@ -11,12 +11,16 @@ class Template:
 
         with open(path, encoding="utf8") as file:
             subject = file.readline()
-            body = ''
+            body = '<html><body>'
 
             file.readline()  # skip empty line
 
             for line in file.readlines():
-                body += line
+                if line == "": continue
+
+                body += f"<p>{line}</p>"
+
+            body += "</body></html>"
 
         return (subject, body)
 

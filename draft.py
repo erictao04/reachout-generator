@@ -47,7 +47,7 @@ class Draft:
         mimeMessage['to'] = recipient
         mimeMessage['From'] = self.sender
         mimeMessage['subject'] = subject
-        mimeMessage.attach(MIMEText(body, 'plain'))
+        mimeMessage.attach(MIMEText(body, 'html'))
 
     def attach_file(self, mimeMessage: MIMEMultipart):
         with open(get_resume_path(self.company), 'rb') as content_file:
