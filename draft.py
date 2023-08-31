@@ -20,8 +20,9 @@ SCOPES = ["https://www.googleapis.com/auth/gmail.compose"]
 class Draft:
     sender = "erictao04@gmail.com"
 
-    def __init__(self, company) -> None:
+    def __init__(self, company, custom_resume) -> None:
         self.company = company
+        self.custom_resume = custom_resume
 
     def authenticate(self):
         creds = None
@@ -50,11 +51,11 @@ class Draft:
         mimeMessage.attach(MIMEText(body, 'html'))
 
     def attach_file(self, mimeMessage: MIMEMultipart):
-        with open(get_resume_path(self.company), 'rb') as content_file:
+        with open(get_resume_path(self.company, self.custom_resume), 'rb') as content_file:
             myFile = MIMEBase("application", 'pdf')
             myFile.set_payload(content_file.read())
             myFile.add_header('Content-Disposition',
-                              'attachment', filename=get_resume_name(self.company))
+                              'attachment', filename=get_resume_name(self.company, self.custom_resume))
             encoders.encode_base64(myFile)
             mimeMessage.attach(myFile)
 

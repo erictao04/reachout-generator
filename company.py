@@ -9,12 +9,12 @@ from draft import Draft
 
 
 class Company:
-    def __init__(self, company: str, email_builder: EmailBuilder) -> None:
+    def __init__(self, company: str, email_builder: EmailBuilder, custom_resume=False) -> None:
         self.company = company.lower()
         self.email_builder = email_builder
         self.template = Template(self.company)
         self.employees = Employees(self.company)
-        self.draft = Draft(self.company)
+        self.draft = Draft(self.company, custom_resume)
 
     def create_drafts(self):
         for first_name, last_name in self.employees.names:
