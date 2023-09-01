@@ -1,9 +1,9 @@
 def get_employee_path(company: str):
-    return f'data\\{company}-employee.csv'
+    return f'data\\{company}\\{company}-employee.csv'
 
 
 def get_template_path(company: str):
-    return f'data\\{company}-template.txt'
+    return f'data\\{company}\\{company}-template.txt'
 
 
 def get_resume_name(company: str, custom_resume: bool):
